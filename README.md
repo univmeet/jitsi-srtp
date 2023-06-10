@@ -1,50 +1,38 @@
-[![dnsjava CI](https://github.com/jitsi/jitsi-srtp/actions/workflows/maven.yml/badge.svg)](https://github.com/jitsi/jitsi-srtp/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/jitsi/jitsi-srtp/branch/master/graph/badge.svg?token=2CTBVOFNVJ)](https://codecov.io/gh/jitsi/jitsi-srtp)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.jitsi/jitsi-srtp/badge.svg)](https://search.maven.org/artifact/org.jitsi/jitsi-srtp)
-[![javadoc](https://javadoc.io/badge2/org.jitsi/jitsi-srtp/javadoc.svg)](https://javadoc.io/doc/jitsi/jitsi-srtp)
-
 # Jitsi SRTP
 
-Jitsi SRTP contains classes for encrypting and decrypting SRTP and SRTCP
-packets.
++ [jitsi-srtp：使用Maven和CMake进行Java继续性集成](https://github.com/jitsi/jitsi-srtp/actions/workflows/build.yml)
++ [jitsi-srtp：代码覆盖率](https://codecov.io/gh/jitsi/jitsi-srtp)
++ [jitsi-srtp：Maven中央仓库](https://search.maven.org/artifact/org.jitsi/jitsi-srtp)
++ [jitsi-srtp：API文档](https://javadoc.io/doc/org.jitsi/jitsi-srtp)
 
-## Building with Java changes only
+Jitsi SRTP包含了用于加密和解密SRTP和SRTCP数据包的类。
 
-To avoid having to build all native libraries,
-execute `resources/fetch-maven.sh` to download and extract the native binaries
-from the latest release on Maven Central.
+## 构建Java修改
 
-## Building the native libraries
+要避免构建所有native库，请执行`resources/fetch-maven.sh`，从Maven中央仓库的最新版本中下载并提取native库。
 
-Jitsi SRTP contains native libraries to speed up encryption/decryption. The
-artifacts released
-to [Maven Central]((https://search.maven.org/artifact/org.jitsi/jitsi-srtp))
-contain pre-built binaries for Ubuntu for OpenSSL 1.1 and 3.
+## 构建native库
 
-**Please take a look at the GitHub Actions build before asking for more detailed
-build instructions!**
+Jitsi SRTP包含了native库，用于加快加密/解密的速度。发布到[Maven中央仓库](https://search.maven.org/artifact/org.jitsi/jitsi-srtp)的构件包含了为Ubuntu的OpenSSL 1.1/3预构建的二进制文件。
+
+**咨询更详细的构建说明之前，请先查看GitHub Actions构建。**
 
 ### Ubuntu
 
-Prerequisites:
+先决条件：
++ OpenJDK 11（或更新版本）
++ Maven
++ Docker
 
-- OpenJDK 11 (or newer)
-- Maven
-- Docker
-
-Run `mvn compile` to generate the JNI headers, then
-run `resources/ubuntu-build-all.sh`.
-The script creates Docker images for each architecture and OpenSSL version.
+运行`mvn compile`，生成JNI头文件；然后运行`resources/ubuntu-build-all.sh`。这个脚本会为每个架构和OpenSSL版本创建Docker镜像。
 
 ### Mac
 
-Prerequisites:
+先决条件：
++ OpenJDK 11（或更新版本，期望的架构）
++ XCode
++ CMake
++ Maven
++ OpenSSL（期望的版本和架构）
 
-- OpenJDK 11 (or newer) for the intended architectures
-- XCode
-- CMake
-- Maven
-- OpenSSL (intended version and architecture)
-
-Run `mvn compile` to generate the JNI headers, then run `resources/mac-cmake.sh`
-.
+运行`mvn compile`，生成JNI头文件；然后运行`resources/mac-cmake.sh`。
